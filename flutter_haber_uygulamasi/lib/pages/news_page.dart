@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_haber_uygulamasi/models/news_category.dart';
 import 'package:flutter_haber_uygulamasi/pages/news_detail_page.dart';
+import 'package:flutter_haber_uygulamasi/pages/search_page.dart';
 import 'package:flutter_haber_uygulamasi/viewmodel/article_list_view_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,13 +17,13 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   int selectedIndex = 0;
   List<NewsCategory> categories = [
-    NewsCategory('business', 'İş'),
-    NewsCategory('entertainment', 'Eğlence'),
-    NewsCategory('general', 'Genel'),
-    NewsCategory('health', 'Sağlık'),
-    NewsCategory('science', 'Bilim'),
-    NewsCategory('sports', 'Spor'),
-    NewsCategory('technology', 'Teknoloji'),
+    NewsCategory('Gündem', 'general'),
+    NewsCategory('Eğlence', 'entertainment'),
+    NewsCategory('İş', 'business'),
+    NewsCategory('Sağlık', 'health'),
+    NewsCategory('Bilim', 'science'),
+    NewsCategory('Spor', 'sports'),
+    NewsCategory('Teknoloji', 'technology'),
   ];
 
   @override
@@ -30,6 +31,9 @@ class _NewsPageState extends State<NewsPage> {
     final vm = Provider.of<ArticleListViewModel>(context);
     return Scaffold(
       appBar: AppBar(
+        actions: [IconButton(onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchPage(list: vm.viewModel.articles,),));
+        }, icon: Icon(Icons.search,color: Colors.indigo,size: 30,))],
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -63,22 +67,22 @@ class _NewsPageState extends State<NewsPage> {
   for (int i = 0; i < categories.length; i++) {
     list.add(GestureDetector(
       onTap: () {
-        vm.getNews(categories[i].key);
+        vm.getNews(categories[i].category);
         setState(() {
           selectedIndex = i;
         });
       },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 0),
-        child: Container(
-          height: 10,
-          color: selectedIndex == i ? Colors.white : Colors.indigo,
+      child:Container(
+          color: selectedIndex == i ? Colors.transparent : Colors.indigo,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
                 categories[i].key.toUpperCase(),
-                style: TextStyle(color: Colors.black,
+                style: selectedIndex == i ? TextStyle(color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.ptSans().fontFamily) : TextStyle(color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: GoogleFonts.ptSans().fontFamily),
@@ -87,7 +91,7 @@ class _NewsPageState extends State<NewsPage> {
           ),
         ),
       ),
-    ));
+    );
   }
   return list;
 }
@@ -136,7 +140,7 @@ class _NewsPageState extends State<NewsPage> {
                               builder: (context) => NewsDetailPage(
                                 title: vm.viewModel.articles[index].title ?? "",
                                 description:
-                                    vm.viewModel.articles[index].description ??
+                                    vm.viewModel.articles[index].content ??
                                         "",
                                 newsDate:
                                     vm.viewModel.articles[index].publishedAt ??

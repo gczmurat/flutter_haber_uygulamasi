@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: ChangeNotifierProvider(
           create: (context) => ArticleListViewModel(),
-          child: NewsPage(),
+          child: const NewsPage(),
         ),
       ),
     );

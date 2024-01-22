@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class NewsService {
   Future<List<Articles>> fetchNews(String category) async {
     String url =
-        'https://newsapi.org/v2/top-headlines?country=tr&category=$category&apiKey=6dc71cc1fcb9403eaf51703119a57222';
+        'https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=6dc71cc1fcb9403eaf51703119a57222';
     Uri uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {

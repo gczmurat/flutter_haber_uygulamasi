@@ -1,5 +1,5 @@
 class NewsCategory {
   String key;
-  String categoryTitle;
-  NewsCategory(this.key, this.categoryTitle);
+  String category;
+  NewsCategory(this.key, this.category);
 }

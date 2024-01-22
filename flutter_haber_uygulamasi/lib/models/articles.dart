@@ -4,11 +4,11 @@ class Articles {
   Source? source;
   String? author;
   String? title;
-  Null? description;
+  String? description;
   String? url;
-  Null? urlToImage;
+  String? urlToImage;
   String? publishedAt;
-  Null? content;
+  String? content;
 
   Articles(
       {this.source,
