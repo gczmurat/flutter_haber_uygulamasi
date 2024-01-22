@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_haber_uygulamasi/models/articles.dart';
 import 'package:flutter_haber_uygulamasi/pages/news_detail_page.dart';
+import 'package:flutter_haber_uygulamasi/utils/constants_design.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SearchPage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _SearchPageState extends State<SearchPage> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.indigo,
             )),
@@ -91,7 +92,7 @@ class _SearchPageState extends State<SearchPage> {
               child: ListView.builder(
                 itemCount: filteredList.length,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.indigo),

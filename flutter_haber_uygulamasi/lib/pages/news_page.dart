@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_haber_uygulamasi/extension/media_query_extension.dart';
 import 'package:flutter_haber_uygulamasi/models/news_category.dart';
 import 'package:flutter_haber_uygulamasi/pages/news_detail_page.dart';
 import 'package:flutter_haber_uygulamasi/pages/search_page.dart';
+import 'package:flutter_haber_uygulamasi/utils/app_constants.dart';
 import 'package:flutter_haber_uygulamasi/viewmodel/article_list_view_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,18 +41,15 @@ class _NewsPageState extends State<NewsPage> {
         centerTitle: true,
         title: Text(
           "Haberler",
-          style: TextStyle(color: Colors.indigo,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.ptSans().fontFamily),
+          style: globalDefaultFieldValueStyle(context),
         ),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            height: 60,
-            width: double.infinity,
+            height: context.height*0.07,
+            width: context.width,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: getCategoriesTab(vm),

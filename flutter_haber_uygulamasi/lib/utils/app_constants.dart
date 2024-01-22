@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Constants{
@@ -7,4 +8,13 @@ class Constants{
       fontSize: 28,
       fontWeight: FontWeight.bold,
       fontFamily: GoogleFonts.ptSans().fontFamily);
+}
+
+TextStyle globalDefaultFieldValueStyle(
+  BuildContext context,
+) {
+  return Theme.of(context)
+      .textTheme
+      .titleSmall!
+      .copyWith(fontWeight: FontWeight.normal);
 }
