@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_haber_uygulamasi/utils/app_constants.dart';
 import 'package:flutter_haber_uygulamasi/utils/constants_design.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NewsDetailPage extends StatefulWidget {
   final String title;
@@ -37,10 +37,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
         centerTitle: true,
         title: Text(
           "Haberin Detayı",
-          style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.ptSans().fontFamily),
+          style: appBarDetailPageTitleText(context),
         ),
       ),
       body: Column(
@@ -55,12 +52,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
           ListTile(
             title: Text(
               widget.title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.black,
-                fontFamily: GoogleFonts.ptSans().fontFamily,
-              ),
+              style: newsTitleText(context),
             ),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -68,39 +60,30 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                 Text(
                   "${widget.newsDate.substring(11, 16)}  ${widget.newsDate.substring(0, 10)}" ??
                       "",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontFamily: GoogleFonts.ptSans().fontFamily,
-                  ),
+                  style: newsContentText(context),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kSymetricPadding, vertical: kSymetricPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: kSymetricPadding, vertical: kSymetricPadding),
             child: Expanded(
                 child: Text(
               widget.description,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                color: Colors.black,
-                fontFamily: GoogleFonts.ptSans().fontFamily,
-              ),
+              style: newsContentText(context),
             )),
           ),
           Padding(
             padding: const EdgeInsets.only(right: kSymetricPadding),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [Text(widget.author,style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontFamily: GoogleFonts.ptSans().fontFamily,
-                  ),)],
+              children: [
+                Text(
+                  widget.author,
+                  style: newsContentText(context),
+                )
+              ],
             ),
           )
         ],
