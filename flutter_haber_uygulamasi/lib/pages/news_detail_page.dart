@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_haber_uygulamasi/utils/constants_design.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsDetailPage extends StatefulWidget {
@@ -28,7 +29,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             )),
@@ -45,9 +46,9 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(kDefaultPadding),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(kDefaultRadius),
               child: Image.network(widget.imageUrl),
             ),
           ),
@@ -78,7 +79,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: kSymetricPadding, vertical: kSymetricPadding),
             child: Expanded(
                 child: Text(
               widget.description,
@@ -91,7 +92,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
             )),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: kSymetricPadding),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [Text(widget.author,style: TextStyle(

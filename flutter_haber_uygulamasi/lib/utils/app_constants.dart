@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,5 +14,7 @@ TextStyle globalDefaultFieldValueStyle(
   return Theme.of(context)
       .textTheme
       .titleSmall!
-      .copyWith(fontWeight: FontWeight.normal);
+      .copyWith(fontSize: 28,
+      fontWeight: FontWeight.bold,
+      fontFamily: GoogleFonts.ptSans().fontFamily,color: Colors.indigo);
 }

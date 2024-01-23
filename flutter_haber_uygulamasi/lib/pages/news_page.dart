@@ -4,10 +4,10 @@ import 'package:flutter_haber_uygulamasi/models/news_category.dart';
 import 'package:flutter_haber_uygulamasi/pages/news_detail_page.dart';
 import 'package:flutter_haber_uygulamasi/pages/search_page.dart';
 import 'package:flutter_haber_uygulamasi/utils/app_constants.dart';
+import 'package:flutter_haber_uygulamasi/utils/constants_design.dart';
 import 'package:flutter_haber_uygulamasi/viewmodel/article_list_view_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 
 class NewsPage extends StatefulWidget {
   const NewsPage({Key? key}) : super(key: key);
@@ -33,9 +33,21 @@ class _NewsPageState extends State<NewsPage> {
     final vm = Provider.of<ArticleListViewModel>(context);
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchPage(list: vm.viewModel.articles,),));
-        }, icon: Icon(Icons.search,color: Colors.indigo,size: 30,))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SearchPage(
+                    list: vm.viewModel.articles,
+                  ),
+                ));
+              },
+              icon: const Icon(
+                Icons.search,
+                color: Colors.indigo,
+                size: 30,
+              ))
+        ],
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -48,7 +60,7 @@ class _NewsPageState extends State<NewsPage> {
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            height: context.height*0.07,
+            height: context.height * 0.07,
             width: context.width,
             child: ListView(
               scrollDirection: Axis.horizontal,
@@ -62,38 +74,43 @@ class _NewsPageState extends State<NewsPage> {
   }
 
   List<GestureDetector> getCategoriesTab(ArticleListViewModel vm) {
-  List<GestureDetector> list = [];
-  for (int i = 0; i < categories.length; i++) {
-    list.add(GestureDetector(
-      onTap: () {
-        vm.getNews(categories[i].category);
-        setState(() {
-          selectedIndex = i;
-        });
-      },
-      child:Container(
-          color: selectedIndex == i ? Colors.transparent : Colors.indigo,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Center(
-              child: Text(
-                categories[i].key.toUpperCase(),
-                style: selectedIndex == i ? TextStyle(color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.ptSans().fontFamily) : TextStyle(color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.ptSans().fontFamily),
+    List<GestureDetector> list = [];
+    for (int i = 0; i < categories.length; i++) {
+      list.add(
+        GestureDetector(
+          onTap: () {
+            vm.getNews(categories[i].category);
+            setState(() {
+              selectedIndex = i;
+            });
+          },
+          child: Container(
+            color: selectedIndex == i ? Colors.transparent : Colors.indigo,
+            child: Padding(
+              padding: const EdgeInsets.all(kDefaultNormalPadding),
+              child: Center(
+                child: Text(
+                  categories[i].key.toUpperCase(),
+                  style: selectedIndex == i
+                      ? TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: GoogleFonts.ptSans().fontFamily)
+                      : TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: GoogleFonts.ptSans().fontFamily),
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    }
+    return list;
   }
-  return list;
-}
 
   Widget getWidgetByStatus(ArticleListViewModel vm) {
     switch (vm.status.index) {
@@ -105,7 +122,7 @@ class _NewsPageState extends State<NewsPage> {
             return Card(
               elevation: 0,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
                   children: [
                     Image.network(vm.viewModel.articles[index].urlToImage ??
@@ -113,7 +130,7 @@ class _NewsPageState extends State<NewsPage> {
                     ListTile(
                       title: Text(
                         vm.viewModel.articles[index].title ?? "",
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                           color: Colors.black,
@@ -123,7 +140,7 @@ class _NewsPageState extends State<NewsPage> {
                       subtitle: Text(
                         "${vm.viewModel.articles[index].publishedAt?.substring(11, 16)}  ${vm.viewModel.articles[index].publishedAt?.substring(0, 10)}" ??
                             "",
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Colors.black,
@@ -139,8 +156,7 @@ class _NewsPageState extends State<NewsPage> {
                               builder: (context) => NewsDetailPage(
                                 title: vm.viewModel.articles[index].title ?? "",
                                 description:
-                                    vm.viewModel.articles[index].content ??
-                                        "",
+                                    vm.viewModel.articles[index].content ?? "",
                                 newsDate:
                                     vm.viewModel.articles[index].publishedAt ??
                                         "",
@@ -152,7 +168,7 @@ class _NewsPageState extends State<NewsPage> {
                               ),
                             ));
                           },
-                          child:  Text(
+                          child: Text(
                             "Haberin Devamı",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,

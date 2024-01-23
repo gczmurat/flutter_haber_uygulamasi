@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_haber_uygulamasi/extension/media_query_extension.dart';
 import 'package:flutter_haber_uygulamasi/models/articles.dart';
 import 'package:flutter_haber_uygulamasi/pages/news_detail_page.dart';
 import 'package:flutter_haber_uygulamasi/utils/constants_design.dart';
@@ -34,7 +35,16 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 35,
+        centerTitle: true,
+        title: Text(
+              "Bir Haber Arayın",
+              style: TextStyle(
+                  color: Colors.indigo,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.ptSans().fontFamily),
+            ),
+        toolbarHeight: context.height*0.06,
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
@@ -47,21 +57,13 @@ class _SearchPageState extends State<SearchPage> {
             )),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Bir Haber Arayın",
-              style: TextStyle(
-                  color: Colors.indigo,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: GoogleFonts.ptSans().fontFamily),
-            ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: context.height*0.01,
             ),
             TextField(
               onChanged: updateList,
@@ -69,7 +71,7 @@ class _SearchPageState extends State<SearchPage> {
                 filled: true,
                 fillColor: Colors.indigo.shade100,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(kDefaultRadius),
                   borderSide: BorderSide.none,
                 ),
                 hintText: "Ara",
@@ -85,8 +87,8 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: context.height*0.01,
             ),
             Expanded(
               child: ListView.builder(
@@ -96,7 +98,7 @@ class _SearchPageState extends State<SearchPage> {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.indigo),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(kDefaultRadius),
                     ),
                     child: ListTile(
                       onTap: () {
@@ -130,7 +132,7 @@ class _SearchPageState extends State<SearchPage> {
                           fontFamily: GoogleFonts.ptSans().fontFamily,
                         ),
                       ),
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.indigo,
                         size: 30,
