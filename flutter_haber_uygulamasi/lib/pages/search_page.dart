@@ -37,7 +37,7 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Bir Haber Arayın",
+          "Search For News",
           style: appBarTitleText(context),
         ),
         toolbarHeight: context.height * 0.06,
@@ -61,21 +61,23 @@ class _SearchPageState extends State<SearchPage> {
             SizedBox(
               height: context.height * 0.01,
             ),
-            TextField(
-              onChanged: updateList,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.indigo.shade100,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(kDefaultRadius),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: "Ara",
-                hintStyle: textFieldHintText(context),
-                prefixIcon: Icon(
-                  Icons.search,
-                  size: 30,
-                  color: Colors.indigo.shade400,
+            SingleChildScrollView(
+              child: TextField(
+                onChanged: updateList,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.indigo.shade100,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(kDefaultRadius),
+                    borderSide: BorderSide.none,
+                  ),
+                  hintText: "Search",
+                  hintStyle: textFieldHintText(context),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 30,
+                    color: Colors.indigo.shade400,
+                  ),
                 ),
               ),
             ),

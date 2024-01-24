@@ -18,13 +18,13 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   int selectedIndex = 0;
   List<NewsCategory> categories = [
-    NewsCategory('Gündem', 'general'),
-    NewsCategory('Eğlence', 'entertainment'),
-    NewsCategory('İş', 'business'),
-    NewsCategory('Sağlık', 'health'),
-    NewsCategory('Bilim', 'science'),
-    NewsCategory('Spor', 'sports'),
-    NewsCategory('Teknoloji', 'technology'),
+    NewsCategory('general', 'general'),
+    NewsCategory('entertainment', 'entertainment'),
+    NewsCategory('business', 'business'),
+    NewsCategory('health', 'health'),
+    NewsCategory('science', 'science'),
+    NewsCategory('sports', 'sports'),
+    NewsCategory('technology', 'technology'),
   ];
 
   @override
@@ -51,7 +51,7 @@ class _NewsPageState extends State<NewsPage> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Haberler",
+          "NEWS",
           style: appBarTitleText(context),
         ),
       ),

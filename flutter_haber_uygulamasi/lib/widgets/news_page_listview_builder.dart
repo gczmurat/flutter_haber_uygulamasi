@@ -39,22 +39,22 @@ class NewsPageListViewBuilder extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => NewsDetailPage(
-                                title: getViewModel[index].title ?? "",
+                                title: getViewModel[index].title ?? "Removed",
                                 description:
-                                    getViewModel[index].content ?? "",
+                                    getViewModel[index].content ?? "Removed this content",
                                 newsDate:
                                     getViewModel[index].publishedAt ??
-                                        "",
+                                        "Removed",
                                 author:
-                                    getViewModel[index].author ?? "",
+                                    getViewModel[index].author ?? "Removed",
                                 imageUrl:
                                     getViewModel[index].urlToImage ??
-                                        "",
+                                        defaultImageUrl,
                               ),
                             ));
                           },
                           child: Text(
-                            "Haberin Devamı",
+                            "Show More",
                             style: buttonText(context),
                           ),
                         )

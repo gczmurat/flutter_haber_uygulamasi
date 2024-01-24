@@ -36,7 +36,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Haberin Detayı",
+          "News Details",
           style: appBarDetailPageTitleText(context),
         ),
       ),
@@ -68,11 +68,10 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
           Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: kSymetricPadding, vertical: kSymetricPadding),
-            child: Expanded(
-                child: Text(
+            child: Text(
               widget.description,
               style: newsContentText(context),
-            )),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: kSymetricPadding),

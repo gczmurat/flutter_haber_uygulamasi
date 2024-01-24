@@ -28,7 +28,7 @@ class SearchPageListViewBuilder extends StatelessWidget {
                     description: getFiltredList[index].content.toString(),
                     newsDate: getFiltredList[index].publishedAt.toString(),
                     author: getFiltredList[index].author.toString(),
-                    imageUrl: getFiltredList[index].urlToImage.toString(),
+                    imageUrl: getFiltredList[index].urlToImage.toString() ?? defaultImageUrl,
                   ),
                 ));
               },
