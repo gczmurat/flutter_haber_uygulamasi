@@ -1,6 +1,6 @@
 ##
 - Uygulamamı yaparken verilerimi https://newsapi.org/ adresinden aldım.
-- Uygulamamda State Manangment yöntemi olarak Riverpod Kullandım.
+- Uygulamamda State Management yöntemi olarak Riverpod Kullandım.
 - Uygulamamda MVVM mimarisini kullandım.
 
 ## Gereksinimler
