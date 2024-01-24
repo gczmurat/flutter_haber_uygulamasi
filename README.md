@@ -1,14 +1,14 @@
 ##
-Uygulamamı yaparken verilerimi https://newsapi.org/ adresinden aldım.
-Uygulamamda State Manangment yöntemi olarak Riverpod Kullandım.
-Uygulamamda MVVM mimarisini kullandım.
+- Uygulamamı yaparken verilerimi https://newsapi.org/ adresinden aldım.
+- Uygulamamda State Manangment yöntemi olarak Riverpod Kullandım.
+- Uygulamamda MVVM mimarisini kullandım.
 
 ## Gereksinimler
-  cupertino_icons: ^1.0.2
-  http: ^1.1.0
-  provider: ^6.1.1
-  url_launcher: ^6.2.3
-  google_fonts: ^6.1.0
+  - cupertino_icons: ^1.0.2
+  - http: ^1.1.0
+  - provider: ^6.1.1
+  - url_launcher: ^6.2.3
+  - google_fonts: ^6.1.0
 
 ## Kurulum
 1. Bu depoyu klonlayın veya zip olarak indirin.
